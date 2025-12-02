@@ -1,123 +1,52 @@
 <?php
 
+// Diese Konfigurationsdatei legt die zentralen Einstellungen für die Laravel-Anwendung fest.
+// Hier werden u.a. Name, Umgebung, Debug-Modus, Zeitzone, Sprache, Verschlüsselung und Wartungsmodus definiert.
+// Die Werte werden meist aus der .env-Datei gelesen, können aber auch direkt hier gesetzt werden.
+
 return [
 
-    /*
-    |--------------------------------------------------------------------------
-    | Application Name
-    |--------------------------------------------------------------------------
-    |
-    | This value is the name of your application, which will be used when the
-    | framework needs to place the application's name in a notification or
-    | other UI elements where an application name needs to be displayed.
-    |
-    */
-
+    // Name der Anwendung, z.B. für Benachrichtigungen oder die Anzeige im UI.
     'name' => env('APP_NAME', 'Laravel'),
 
-    /*
-    |--------------------------------------------------------------------------
-    | Application Environment
-    |--------------------------------------------------------------------------
-    |
-    | This value determines the "environment" your application is currently
-    | running in. This may determine how you prefer to configure various
-    | services the application utilizes. Set this in your ".env" file.
-    |
-    */
-
+    // Umgebung, in der die Anwendung läuft (z.B. 'local', 'production').
+    // Dies beeinflusst z.B. das Logging und die Fehlerausgabe.
     'env' => env('APP_ENV', 'production'),
 
-    /*
-    |--------------------------------------------------------------------------
-    | Application Debug Mode
-    |--------------------------------------------------------------------------
-    |
-    | When your application is in debug mode, detailed error messages with
-    | stack traces will be shown on every error that occurs within your
-    | application. If disabled, a simple generic error page is shown.
-    |
-    */
-
+    // Debug-Modus: Bei true werden detaillierte Fehlermeldungen angezeigt.
+    // Im Produktivbetrieb sollte dies immer false sein!
     'debug' => (bool) env('APP_DEBUG', false),
 
-    /*
-    |--------------------------------------------------------------------------
-    | Application URL
-    |--------------------------------------------------------------------------
-    |
-    | This URL is used by the console to properly generate URLs when using
-    | the Artisan command line tool. You should set this to the root of
-    | the application so that it's available within Artisan commands.
-    |
-    */
-
+    // Basis-URL der Anwendung, z.B. für die Generierung von Links in Artisan-Befehlen.
     'url' => env('APP_URL', 'http://localhost'),
 
-    /*
-    |--------------------------------------------------------------------------
-    | Application Timezone
-    |--------------------------------------------------------------------------
-    |
-    | Here you may specify the default timezone for your application, which
-    | will be used by the PHP date and date-time functions. The timezone
-    | is set to "UTC" by default as it is suitable for most use cases.
-    |
-    */
-
+    // Zeitzone, die für Datums- und Zeitfunktionen verwendet wird.
     'timezone' => 'UTC',
 
-    /*
-    |--------------------------------------------------------------------------
-    | Application Locale Configuration
-    |--------------------------------------------------------------------------
-    |
-    | The application locale determines the default locale that will be used
-    | by Laravel's translation / localization methods. This option can be
-    | set to any locale for which you plan to have translation strings.
-    |
-    */
-
+    // Standardsprache der Anwendung (z.B. 'de' für Deutsch, 'en' für Englisch).
     'locale' => env('APP_LOCALE', 'en'),
 
+    // Fallback-Sprache, falls eine Übersetzung nicht gefunden wird.
     'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
 
+    // Sprache für Faker (Testdaten-Generator).
     'faker_locale' => env('APP_FAKER_LOCALE', 'en_US'),
 
-    /*
-    |--------------------------------------------------------------------------
-    | Encryption Key
-    |--------------------------------------------------------------------------
-    |
-    | This key is utilized by Laravel's encryption services and should be set
-    | to a random, 32 character string to ensure that all encrypted values
-    | are secure. You should do this prior to deploying the application.
-    |
-    */
-
+    // Verschlüsselungsalgorithmus für sensible Daten.
     'cipher' => 'AES-256-CBC',
 
+    // Schlüssel für die Verschlüsselung (muss 32 Zeichen lang sein).
     'key' => env('APP_KEY'),
 
+    // Frühere Schlüssel für die Entschlüsselung alter Daten (z.B. nach Schlüsselwechsel).
     'previous_keys' => [
         ...array_filter(
             explode(',', (string) env('APP_PREVIOUS_KEYS', ''))
         ),
     ],
 
-    /*
-    |--------------------------------------------------------------------------
-    | Maintenance Mode Driver
-    |--------------------------------------------------------------------------
-    |
-    | These configuration options determine the driver used to determine and
-    | manage Laravel's "maintenance mode" status. The "cache" driver will
-    | allow maintenance mode to be controlled across multiple machines.
-    |
-    | Supported drivers: "file", "cache"
-    |
-    */
-
+    // Einstellungen für den Wartungsmodus (z.B. für Updates oder Wartungsarbeiten).
+    // Der Treiber 'file' speichert den Status lokal, 'cache' verteilt ihn über mehrere Server.
     'maintenance' => [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),

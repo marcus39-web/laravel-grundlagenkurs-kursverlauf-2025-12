@@ -2,43 +2,28 @@
 
 use Illuminate\Support\Str;
 
+// Diese Konfigurationsdatei regelt das Caching in Laravel.
+// Hier werden der Standard-Cache-Treiber, die verfügbaren Cache-Stores und das Präfix für Cache-Keys festgelegt.
+// Die Werte werden meist aus der .env-Datei gelesen, können aber auch direkt hier gesetzt werden.
+
 return [
 
-    /*
-    |--------------------------------------------------------------------------
-    | Default Cache Store
-    |--------------------------------------------------------------------------
-    |
-    | This option controls the default cache store that will be used by the
-    | framework. This connection is utilized if another isn't explicitly
-    | specified when running a cache operation inside the application.
-    |
-    */
-
+    // Standard-Cache-Store, der verwendet wird, wenn kein anderer explizit angegeben ist.
+    // Mögliche Werte: 'file', 'database', 'redis', 'array', etc.
     'default' => env('CACHE_STORE', 'database'),
 
-    /*
-    |--------------------------------------------------------------------------
-    | Cache Stores
-    |--------------------------------------------------------------------------
-    |
-    | Here you may define all of the cache "stores" for your application as
-    | well as their drivers. You may even define multiple stores for the
-    | same cache driver to group types of items stored in your caches.
-    |
-    | Supported drivers: "array", "database", "file", "memcached",
-    |                    "redis", "dynamodb", "octane",
-    |                    "failover", "null"
-    |
-    */
-
+    // Hier werden alle verfügbaren Cache-Stores definiert.
+    // Ein Store ist eine konkrete Implementierung, wie und wo Daten zwischengespeichert werden.
+    // Es können mehrere Stores für verschiedene Zwecke angelegt werden.
     'stores' => [
 
+        // Cache im Arbeitsspeicher (nur für die aktuelle Anfrage, nicht persistent)
         'array' => [
             'driver' => 'array',
             'serialize' => false,
         ],
 
+        // Cache in der Datenbank (Tabelle 'cache')
         'database' => [
             'driver' => 'database',
             'connection' => env('DB_CACHE_CONNECTION'),
@@ -47,12 +32,14 @@ return [
             'lock_table' => env('DB_CACHE_LOCK_TABLE'),
         ],
 
+        // Cache als Datei im Dateisystem
         'file' => [
             'driver' => 'file',
             'path' => storage_path('framework/cache/data'),
             'lock_path' => storage_path('framework/cache/data'),
         ],
 
+        // Cache mit Memcached (verteiltes In-Memory-Caching)
         'memcached' => [
             'driver' => 'memcached',
             'persistent_id' => env('MEMCACHED_PERSISTENT_ID'),
@@ -72,12 +59,14 @@ return [
             ],
         ],
 
+        // Cache mit Redis (verteiltes In-Memory-Caching)
         'redis' => [
             'driver' => 'redis',
             'connection' => env('REDIS_CACHE_CONNECTION', 'cache'),
             'lock_connection' => env('REDIS_CACHE_LOCK_CONNECTION', 'default'),
         ],
 
+        // Cache mit DynamoDB (Cloud-Lösung von AWS)
         'dynamodb' => [
             'driver' => 'dynamodb',
             'key' => env('AWS_ACCESS_KEY_ID'),
@@ -87,10 +76,12 @@ return [
             'endpoint' => env('DYNAMODB_ENDPOINT'),
         ],
 
+        // Cache für Laravel Octane (Performance-Optimierung)
         'octane' => [
             'driver' => 'octane',
         ],
 
+        // Failover-Cache: Wenn der erste Store nicht verfügbar ist, wird der nächste verwendet.
         'failover' => [
             'driver' => 'failover',
             'stores' => [
@@ -101,17 +92,7 @@ return [
 
     ],
 
-    /*
-    |--------------------------------------------------------------------------
-    | Cache Key Prefix
-    |--------------------------------------------------------------------------
-    |
-    | When utilizing the APC, database, memcached, Redis, and DynamoDB cache
-    | stores, there might be other applications using the same cache. For
-    | that reason, you may prefix every cache key to avoid collisions.
-    |
-    */
-
+    // Präfix für alle Cache-Keys, um Kollisionen mit anderen Anwendungen zu vermeiden.
     'prefix' => env('CACHE_PREFIX', Str::slug((string) env('APP_NAME', 'laravel')).'-cache-'),
 
 ];

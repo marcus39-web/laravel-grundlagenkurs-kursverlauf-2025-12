@@ -1,35 +1,20 @@
 <?php
 
+// Diese Konfigurationsdatei regelt die Dateispeicherung in Laravel.
+// Hier werden der Standard-Speicherort (Disk), alle verfügbaren Disks und symbolische Links definiert.
+// Die Werte werden meist aus der .env-Datei gelesen, können aber auch direkt hier gesetzt werden.
+
 return [
 
-    /*
-    |--------------------------------------------------------------------------
-    | Default Filesystem Disk
-    |--------------------------------------------------------------------------
-    |
-    | Here you may specify the default filesystem disk that should be used
-    | by the framework. The "local" disk, as well as a variety of cloud
-    | based disks are available to your application for file storage.
-    |
-    */
-
+    // Standard-Dateisystem (Disk), das für Dateioperationen verwendet wird.
+    // Mögliche Werte: 'local', 'public', 's3', etc.
     'default' => env('FILESYSTEM_DISK', 'local'),
 
-    /*
-    |--------------------------------------------------------------------------
-    | Filesystem Disks
-    |--------------------------------------------------------------------------
-    |
-    | Below you may configure as many filesystem disks as necessary, and you
-    | may even configure multiple disks for the same driver. Examples for
-    | most supported storage drivers are configured here for reference.
-    |
-    | Supported drivers: "local", "ftp", "sftp", "s3"
-    |
-    */
-
+    // Hier werden alle verfügbaren Disks definiert.
+    // Eine Disk ist eine konkrete Implementierung, wie und wo Dateien gespeichert werden (z.B. lokal, S3, FTP).
+    // Es können mehrere Disks für verschiedene Zwecke angelegt werden.
     'disks' => [
-
+        // Lokale Speicherung im privaten Bereich (nicht öffentlich zugänglich)
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app/private'),
@@ -38,6 +23,7 @@ return [
             'report' => false,
         ],
 
+        // Lokale Speicherung im öffentlichen Bereich (öffentlich zugänglich über /storage)
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
@@ -47,6 +33,7 @@ return [
             'report' => false,
         ],
 
+        // Speicherung in der Cloud mit Amazon S3
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
@@ -59,20 +46,10 @@ return [
             'throw' => false,
             'report' => false,
         ],
-
     ],
 
-    /*
-    |--------------------------------------------------------------------------
-    | Symbolic Links
-    |--------------------------------------------------------------------------
-    |
-    | Here you may configure the symbolic links that will be created when the
-    | `storage:link` Artisan command is executed. The array keys should be
-    | the locations of the links and the values should be their targets.
-    |
-    */
-
+    // Symbolische Links, die beim Ausführen von 'php artisan storage:link' erstellt werden.
+    // Die Schlüssel sind die Link-Pfade, die Werte die Zielverzeichnisse.
     'links' => [
         public_path('storage') => storage_path('app/public'),
     ],
