@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Campusmanager')</title>
+    <title>@yield('title', 'Librarymanager')</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
     <div class="page">
         <header class="page-header">
-            <h1 class="page-title">Campusmanager</h1>
+            <h1 class="page-title">Libararymanager</h1>
             <p class="page-subtitle">Laravel-Grundlagenkurs</p>
             <nav class="page-nav">
-                <a href="{{ route('home') }}">Start</a>
-                <a href="{{ route('about') }}">About</a>
+                <a href="{{ route('books') }}">Books</a>
+                <a href="{{ route('users') }}" style="margin-left:10px;">Users</a>
             </nav>
             <hr>
         </header>

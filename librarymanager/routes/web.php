@@ -11,4 +11,10 @@ Route::get('/hello', function(){
     return 'Hello, Laravel!';
 });
 
-Route::get('/books', [BookControler::class, 'index'])->name('books');
+
+Route::get('/books', [App\Http\Controllers\BookListController::class, 'index'])->name('books');
+
+Route::get('/users', function() {
+    $users = App\Models\User::all();
+    return view('users', ['users' => $users]);
+})->name('users');
