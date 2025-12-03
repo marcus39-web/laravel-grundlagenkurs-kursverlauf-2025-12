@@ -1,4 +1,3 @@
-
 {{--
     Layout-Template für alle Seiten.
     Hier werden Header, Navigation, Footer und der Hauptbereich definiert.
@@ -19,7 +18,7 @@
             <h1 class="page-title">Libararymanager</h1> {{-- Hauptüberschrift --}}
             <p class="page-subtitle">Laravel-Grundlagenkurs</p> {{-- Untertitel --}}
             <nav class="page-nav"> {{-- Navigation --}}
-                <a href="{{ route('books') }}">Books</a> {{-- Link zur Bücherliste --}}
+                <a href="{{ route('books.index') }}">Books</a> {{-- Link zur Bücherliste --}}
                 <a href="{{ route('users') }}" style="margin-left:10px;">Users</a> {{-- Link zur Userliste --}}
             </nav>
             <hr> {{-- Trennlinie --}}

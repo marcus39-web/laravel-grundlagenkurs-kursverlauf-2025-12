@@ -6,14 +6,15 @@ use Illuminate\Support\Facades\Route;
 // Importiert einen Beispiel-Controller (wird hier nicht direkt verwendet, aber oft Standard)
 use App\Http\Controllers\BookControler;
 
+// Importiert einen weiteren Controller für die Resource-Routes
+use App\Http\Controllers\BookController;
+
 // -----------------------------
 // Definiert die Startseite ("/")
 // -----------------------------
 // Wenn ein Benutzer die Root-URL aufruft, wird die View "welcome" zurückgegeben.
 // Das ist die Standard-Startseite von Laravel.
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [BookController::class, 'index']);
 
 // -----------------------------------
 // Beispielroute für einen einfachen Text
@@ -42,3 +43,9 @@ Route::get('/users', function() {
     // Gibt die User an die View "users" weiter
     return view('users', ['users' => $users]);
 })->name('users');
+
+// -----------------------------------
+// Resource-Routes für Bücher
+// -----------------------------------
+// Registriert die Resource-Routes für den BookController
+Route::resource('books', BookController::class);
