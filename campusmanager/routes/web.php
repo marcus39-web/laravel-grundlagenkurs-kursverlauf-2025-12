@@ -4,24 +4,40 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StudentsController;
 
-
 Route::get('/', function () {
     return view('welcome');
 });
 
 
 Route::get('/hello', function(){
-    return 'Hello, Laravel!';
+    return 'Hallo Laravel!';
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/about', [AboutController::class, 'index'])->name('about');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
 
-Route::get('/students', [StudentsController::class, 'index'])->name('students.index'); 
+Route::get('/students', [StudentsController::class, 'index'])
+    ->name('students.index');
 
-Route::get('/students/create', [StudentsController::class, 'create'])->name('students.create');
+Route::get('/students/create', [StudentsController::class, 'create'])
+    ->name('students.create');
 
-Route::get('/courses', function(){
+Route::post('/students', [StudentsController::class, 'store'])
+    ->name('students.store');
+
+Route::get('/students/{student}', [StudentsController::class, 'show'])
+    ->name('students.show');
+
+Route::get('/students/{student}/edit', [StudentsController::class, 'edit'])
+    ->name('students.edit');
+
+Route::put('/students/{student}', [StudentsController::class, 'update'])
+    ->name('students.update');
+
+Route::delete('/students/{student}', [StudentsController::class, 'destroy'])
+    ->name('students.destroy');
+
+Route::get('/courses', function() {
     return 'Kursliste folgt';
 })->name('courses.index');

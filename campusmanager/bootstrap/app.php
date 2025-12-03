@@ -15,4 +15,8 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
+<<<<<<< HEAD
 })->create();
+=======
+    })->create();
+>>>>>>> 448578e (Campusmanager kompletiert nur fehlen die Studenten)
