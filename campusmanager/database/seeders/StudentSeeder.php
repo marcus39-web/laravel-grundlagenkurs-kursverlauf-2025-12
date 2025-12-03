@@ -2,14 +2,34 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Student;
+use Illuminate\Support\Str;
 
 class StudentSeeder extends Seeder
 {
-    public function run()
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
     {
-        // Erzeuge 10 Beispiel-Studenten
+        Student::create([
+            'firstname' => 'Max',
+            'lastname' => 'Mustermann',
+            'email' => 'mac@example.com',
+            'age' => 21,
+            'matriculation_number' => 'MAT-' . Str::upper(Str::random(6)),
+        ]);
+
+        Student::create([
+            'firstname' => 'Erika',
+            'lastname' => 'Mustermann',
+            'email' => 'erika-m@example.com',
+            'age' => 20,
+            'matriculation_number' => 'MAT-' . Str::upper(Str::random(6)),
+        ]);
+
         Student::factory()->count(10)->create();
     }
 }
