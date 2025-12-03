@@ -30,13 +30,9 @@ class StudentsController extends Controller
     }
     
     public function show(Student $student){
-<<<<<<< HEAD
-        return view('students.show');
-=======
         return view('students.show', [
             'student' => $student,
         ]);
->>>>>>> 448578e (Campusmanager kompletiert nur fehlen die Studenten)
     }
     
     public function edit(Student $student){
@@ -51,7 +47,7 @@ class StudentsController extends Controller
             'lastname'  => ['required', 'string', 'max:100'],
             'email'     => ['required', 'email'],
             'age'       => ['nullable', 'integer', 'min:16', 'max:90'],
-            'matriculation_number' => [
+            'matrikulation_nummer' => [
                 'required',
                 'string',
                 'max:20',

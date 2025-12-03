@@ -13,6 +13,6 @@ class Student extends Model
         'lastname',
         'email',
         'age',
-        'matriculation_number'
+        'matrikulation_nummer'
     ];
 }
