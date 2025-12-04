@@ -13,6 +13,17 @@ class Student extends Model
         'lastname',
         'email',
         'age',
-        'matrikulation_nummer'
+           'marticel_number'
     ];
+
+    public function mainCourse() {
+        // Ein Student hat genau einen Hauptkurs
+        return $this->belongsTo(Course::class, 'main_course_id');
+    }
+
+    public function courses() {
+        // Viele Studierende können sich für viele Kurse anmelden (n:m Beziehung)
+        return $this->belongsToMany(Course::class, 'course_student')
+            ->withTimestamps();
+    }   
 }

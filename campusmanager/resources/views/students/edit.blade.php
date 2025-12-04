@@ -55,9 +55,9 @@
             </div>
             
             <div class="form-group">
-                <label for="matrikulation_nummer">Matrikelnummer:</label>
-                <input type="text" name="matrikulation_nummer" id="matrikulation_nummer" value="{{ old('matrikulation_nummer', $student->matrikulation_nummer) }}">
-                @error('matrikulation_nummer')
+                <label for="marticel_number">Marticel Number:</label>
+                <input type="text" name="marticel_number" id="marticel_number" value="{{ old('marticel_number', $student->marticel_number) }}">
+                @error('marticel_number')
                     <span class="form-error">{!! __($message) !!}</span>
                 @enderror
             </div>

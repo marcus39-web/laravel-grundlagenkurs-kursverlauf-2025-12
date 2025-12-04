@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sessions', function (Blueprint $table) {
+        Schema::create('courses', function (Blueprint $table) {
             $table->id();
+            $table->string('name'); // z.B PHP Grundlagen
+            $table->string('shortname'); // z.B PHP-GRDL
+            $table->unsignedInteger('etcs')->nullable(); // z.B PHP-GRDL
             $table->timestamps();
         });
     }
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sessions');
+        Schema::dropIfExists('courses');
     }
 };

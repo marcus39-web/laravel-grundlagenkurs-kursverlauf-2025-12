@@ -7,7 +7,7 @@
     
     
       <p>
-        Matrikelnummer: <strong>{{ $student->matriculation_number }}</strong><br>
+          Marticel Number: <strong>{{ $student->marticel_number }}</strong><br>
         E-Mail-Adresse: <strong>{{ $student->email }}</strong><br>
         Alter: <strong>{{ $student->age }}</strong><br>
         angelegt am: <strong>{{ $student->created_at }}</strong><br>
