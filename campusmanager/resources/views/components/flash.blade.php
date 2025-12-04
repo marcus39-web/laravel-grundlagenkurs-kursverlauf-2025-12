@@ -1,22 +1,22 @@
 @if(session('success'))
-<x-alert type="success">{{ session('success') }}</x-alert>
+  <x-alert type="success">{{ session('success') }}</x-alert>
 @endif
 
 @if(session('error'))
-<x-alert type="warning">{{ session('error') }}</x-alert>
+  <x-alert type="warning">{{ session('error') }}</x-alert>
 @endif
 
 @if(session('status'))
-<x-alert>{{ session('status') }}</x-alert>
+  <x-alert>{{ session('status') }}</x-alert>
 @endif
 
 @if($errors->any())
-<x-alert type="warning">
-    <strong>Es sind{{$errors->count()}} Fehler aufgetreten:</strong>
+  <x-alert type="warning">
+    <strong>Es sind {{ $errors->count() }} Fehler aufgetreten:</strong>
     <ul>
-        @foreach($errors->all() as $error)
+      @foreach($errors->all() as $error)
         <li>{!! $error !!}</li>
-        @endforeach
+      @endforeach
     </ul>
-</x-alert>
+  </x-alert>
 @endif

@@ -3,15 +3,12 @@
 @section('title', 'Startseite')
 
 @section('content')
-    <h2>Infos über {{ $student->firstname }} {{ $student->lastname }}</h2>
-    
+    <h2>Infos über {{ $student->firstname }} {{ $student->lastname }}</h2>    
+
+    <x-flash />
     
       <p>
-          Marticel Number: <strong>{{ $student->marticel_number }}</strong><br>
-          Status:
-          <span style="background-color: {{ $student->active ? '#d4edda' : '#f8d7da' }}; padding: 4px 8px;">
-            {{ $student->active ? 'Aktiv' : 'Inaktiv' }}
-          </span><br>
+        Matrikelnummer: <strong>{{ $student->matriculation_number }}</strong><br>
         E-Mail-Adresse: <strong>{{ $student->email }}</strong><br>
         Alter: <strong>{{ $student->age }}</strong><br>
         angelegt am: <strong>{{ $student->created_at }}</strong><br>

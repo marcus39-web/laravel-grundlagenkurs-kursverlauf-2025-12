@@ -28,10 +28,8 @@
                     <tr>
                         <td>{{ $s->id }}</td>
                         <td>{{ $s->firstname }} {{ $s->lastname }}</td>
-                        <td> 
-                            @foreach ($s->courses as $course)
-                            <span class="badge">{{$course->shortname}}</span>
-                            @endforeach
+                        <td>
+                            <span class="badge">{{ $s->mainCourse?->shortname }}</span>
                         </td>
                         <td>{{ $s->email }}</td>
                         <td>

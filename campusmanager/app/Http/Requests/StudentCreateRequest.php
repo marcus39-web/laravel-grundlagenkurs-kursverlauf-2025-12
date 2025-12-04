@@ -18,12 +18,13 @@ class StudentCreateRequest extends FormRequest
       'lastname'  => ['required', 'string', 'max:100'],
       'email'     => ['required', 'email', 'unique:students,email'],
       'age'       => ['nullable', 'integer', 'min:16', 'max:90'],
-       'marticel_number' => [
+      'matriculation_number' => [
         'required',
         'string',
         'max:20',
-         'unique:students,marticel_number',
-      ]
+        'unique:students,matriculation_number',
+      ],
+      'main_course_id' => ['nullable', 'integer', 'exists:courses,id'],
     ];
   }
 }

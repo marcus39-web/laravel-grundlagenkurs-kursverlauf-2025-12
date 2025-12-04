@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('lastname');
             $table->string('email')->unique();
             $table->unsignedInteger('age')->nullable();
-                 $table->string('marticel_number')->unique();
+                 $table->string('matriculation_number')->unique();
             $table->timestamps();
         });
     }
