@@ -20,7 +20,7 @@ class StudentFactory extends Factory
             'firstname' => $this->faker->sentence($nbWords = 2, $variableNbWords = true),
             'lastname' => $this->faker->sentence($nbWords = 2, $variableNbWords = true),
             'email' => fake()->unique()->safeEmail(),
-            'matriculation_number' => $this->faker->sentence($nbWords = 1, $variableNbWords = true),
+            'marticel_number' => $this->faker->sentence($nbWords = 1, $variableNbWords = true),
         ];
     }
 }
