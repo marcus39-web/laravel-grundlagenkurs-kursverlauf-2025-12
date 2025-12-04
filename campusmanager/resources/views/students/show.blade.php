@@ -8,6 +8,10 @@
     
       <p>
           Marticel Number: <strong>{{ $student->marticel_number }}</strong><br>
+          Status:
+          <span style="background-color: {{ $student->active ? '#d4edda' : '#f8d7da' }}; padding: 4px 8px;">
+            {{ $student->active ? 'Aktiv' : 'Inaktiv' }}
+          </span><br>
         E-Mail-Adresse: <strong>{{ $student->email }}</strong><br>
         Alter: <strong>{{ $student->age }}</strong><br>
         angelegt am: <strong>{{ $student->created_at }}</strong><br>
