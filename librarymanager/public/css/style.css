@@ -1,3 +1,41 @@
+/* Suchformular */
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.search-form input[type="text"] {
+  padding: 4px 8px;
+  min-width: 220px;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+}
+.search-form button {
+  padding: 4px 16px;
+  background: var(--accent-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.search-form button:hover {
+  background: var(--accent-secondary);
+}
+
+/* Buchliste */
+.book-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.5rem;
+}
+.book-item {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-soft);
+}
+.book-item:last-child {
+  border-bottom: none;
+}
 /* Kurs-Stylesheet für Laravel Grundlagen
    Kann für Beispiel- und Übungsseiten gemeinsam genutzt werden.
 */
@@ -32,6 +70,21 @@ body {
   background: radial-gradient(circle at top left, #dbeafe 0, #f5f7fb 40%, #f5f7fb 100%);
   color: var(--text-main);
   line-height: 1.6;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('/images/book-bg.png') no-repeat center center;
+  background-size: contain;
+  opacity: 0.2;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .page {
@@ -110,8 +163,8 @@ h3 {
   color: var(--accent-secondary);
 }
 
+ul,
 /* Listen */
-
 ul,
 ol {
   padding-left: 1.4rem;
@@ -119,6 +172,13 @@ ol {
 
 li+li {
   margin-top: 0.2rem;
+}
+
+/* Entferne übergroße Icons, falls vorhanden */
+svg, .icon-large {
+  width: 1em !important;
+  height: 1em !important;
+  color: inherit !important;
 }
 
 /* Karten / Boxen */

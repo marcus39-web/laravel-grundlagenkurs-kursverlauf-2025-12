@@ -9,29 +9,26 @@
 
 @section('content') {{-- Start des Inhaltsbereichs --}}
 
-<h2>Bücherliste</h2> {{-- Überschrift --}}
 
-<table border="1" cellpadding="8" style="margin-top:20px;"> {{-- Tabelle für die Bücher --}}
-	<thead>
-		<tr>
-			<th>Titel</th> {{-- Spalte für den Buchtitel --}}
-			<th>Autor</th> {{-- Spalte für den Autor --}}
-			<th>ISBN</th> {{-- Spalte für die ISBN --}}
-			<th>Erscheinungsjahr</th> {{-- Spalte für das Jahr --}}
-			<th>Kategorie</th> {{-- Spalte für die Kategorie --}}
-		</tr>
-	</thead>
-	<tbody>
-		{{-- Schleife über alle Bücher --}}
-		@foreach($books as $book)
-			<tr>
-				<td>{{ $book->title }}</td> {{-- Buchtitel --}}
-				<td>{{ $book->author }}</td> {{-- Autor --}}
-				<td>{{ $book->isbn }}</td> {{-- ISBN --}}
-				<td>{{ $book->published_year }}</td> {{-- Erscheinungsjahr --}}
-				<td>{{ $book->category }}</td> {{-- Kategorie --}}
-			</tr>
-		@endforeach
-	</tbody>
-</table>
+<form action="/books" method="GET" style="margin-bottom: 20px;">
+	<input
+		type="text"
+		name="q"
+		placeholder="Suche nach Titel oder Autor"
+		value="{{ $q ?? '' }}"
+	>
+	<button type="submit">Suchen</button>
+</form>
+
+
+<h1>LibraryManager – Bücherliste</h1>
+
+<ul class="book-list">
+    @foreach ($books as $book)
+        <li class="book-item">
+            <strong>{{ $book->title }}</strong> – {{ $book->author }} ({{ $book->published_year }})
+            {{-- Hier könnten noch Links für Bearbeiten/Löschen stehen --}}
+        </li>
+    @endforeach
+</ul>
 @endsection

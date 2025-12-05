@@ -49,3 +49,4 @@ Route::get('/users', function() {
 // -----------------------------------
 // Registriert die Resource-Routes für den BookController
 Route::resource('books', BookController::class);
+
